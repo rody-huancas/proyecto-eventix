@@ -4,41 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#00A3FF"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="10dp"
     tools:context=".SessionActivity">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
         android:gravity="center"
-        android:text="Proyecto RSU"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="25dp" />
+        android:text="EVENTIX"
+        android:textColor="#FFFFFF"
+        android:textSize="40dp" />
 
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="5dp"/>
+        android:layout_height="5dp" />
 
-    <TextView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Escuela de Ingeniería de Sistemas"
-        android:textSize="16dp"/>
+        android:layout_height="300dp"
+        android:src="@drawable/logito" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="10dp" />
 
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
 
 </LinearLayout>
