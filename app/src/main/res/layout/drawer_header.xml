@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="?attr/colorPrimary"
+    android:gravity="center_vertical"
+    android:paddingTop="70dp"
+    android:paddingLeft="15dp"
+    android:paddingBottom="15dp">
+
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/iv_foto_menu"/>
+
+    <TextView
+        android:id="@+id/user_name_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rody Huancas"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+    <TextView
+        android:id="@+id/user_email_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rody@correo.com"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+</LinearLayout>

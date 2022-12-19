@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/inicio"
+        android:icon="@drawable/home"
+        android:title="Inicio"/>
+
+    <item
+        android:title="Administración">
+        <menu>
+            <item
+                android:id="@+id/men_familias"
+                android:icon="@drawable/tree"
+                android:title="Familias"/>
+
+            <item
+                android:id="@+id/men_especies"
+                android:icon="@drawable/map"
+                android:title="Especies"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="Usuario">
+        <menu>
+            <item
+                android:id="@+id/editar_usuario"
+                android:title="Actualizar Datos"
+                android:icon="@drawable/user"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="Sesión">
+        <menu>
+            <item
+                android:id="@+id/cerrar_sesion"
+                android:title="Cerrar Sesión"
+                android:icon="@drawable/logout"/>
+        </menu>
+    </item>
+
+</menu>
