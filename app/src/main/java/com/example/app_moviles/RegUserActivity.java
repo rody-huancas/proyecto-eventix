@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class RegUserActivity extends AppCompatActivity {
 
-    private TextInputEditText usuario_nombres_reg, usuario_nacimiento_reg, usuario_email_reg, usuario_clave_reg;
+    private TextInputEditText usuario_nombres_reg, usuario_apellidos_reg, usuario_email_reg, usuario_clave_reg, usuario_direccion_reg, usuario_descripcion_reg;
     private Button btn_registrar_usuario, btn_cancelar_usuario;
 
     private RequestQueue requestQueue;
@@ -48,15 +48,17 @@ public class RegUserActivity extends AppCompatActivity {
         setTitle("Registro de usuario");
 
         usuario_nombres_reg = findViewById(R.id.usuario_nombres_reg);
-        usuario_nacimiento_reg = findViewById(R.id.usuario_nacimiento_reg);
+        usuario_apellidos_reg = findViewById(R.id.usuario_apellidos_reg);
         usuario_email_reg = findViewById(R.id.usuario_email_reg);
         usuario_clave_reg = findViewById(R.id.usuario_clave_reg);
+        usuario_direccion_reg = findViewById(R.id.usuario_direccion_reg);
+        usuario_descripcion_reg = findViewById(R.id.usuario_descripcion_reg);
 
         btn_cancelar_usuario = findViewById(R.id.btn_cancelar_usuario);
         btn_registrar_usuario = findViewById(R.id.btn_registrar_usuario);
 
         Config config = new Config();
-        API = config.getAPI_URL()+"api_usuario.php";
+        API = config.getAPI_URL() + "api_usuario.php";
 
         btn_cancelar_usuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,20 +73,24 @@ public class RegUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String validacion ="";
-                if(usuario_nombres_reg.getText().toString().isEmpty()){
-                    validacion=validacion+"Ingrese sus nombres";
-                }else if(usuario_nacimiento_reg.getText().toString().isEmpty()){
-                    validacion=validacion+"Ingrese su fecha de nacimineto";
-                }else if(usuario_email_reg.getText().toString().isEmpty()){
-                    validacion=validacion+"Ingrese su correo";
-                }else if(usuario_clave_reg.getText().toString().isEmpty()){
-                    validacion=validacion+"Ingrese su contraseña";
+                String validacion = "";
+                if (usuario_nombres_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese sus nombres";
+                } else if (usuario_apellidos_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese sus apellidos";
+                } else if (usuario_email_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese su correo";
+                } else if (usuario_clave_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese su contraseña";
+                } else if (usuario_direccion_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese su direccion";
+                } else if (usuario_descripcion_reg.getText().toString().isEmpty()) {
+                    validacion = validacion + "Ingrese su descripcion";
                 }
 
-                if(validacion.isEmpty()){
+                if (validacion.isEmpty()) {
                     RegistrarUsuario();
-                }else{
+                } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(RegUserActivity.this);
                     alert.setTitle("Registro de usuarios");
                     alert.setMessage(validacion);
@@ -100,22 +106,11 @@ public class RegUserActivity extends AppCompatActivity {
             }
         });
 
-        final Calendar calendar = Calendar.getInstance();
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
-        mes = calendar.get(Calendar.MONTH);
-        annio = calendar.get(Calendar.YEAR);
-
-        usuario_nacimiento_reg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar(usuario_nacimiento_reg);
-            }
-        });
     }
 
-    private void RegistrarUsuario(){
-
-        final ProgressDialog progressDialog = ProgressDialog.show(this, "Registrando","Espere un momento", false,false);
+    private void RegistrarUsuario() {
+        final ProgressDialog progressDialog = ProgressDialog.show(this, "Registrando", "Espere un momento", false, false);
+        Toast.makeText(RegUserActivity.this, "prueba", Toast.LENGTH_SHORT).show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, API, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -132,7 +127,7 @@ public class RegUserActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.cancel();
-                            if(code == 1){
+                            if (code == 1) {
                                 finish();
                             }
                         }
@@ -151,56 +146,23 @@ public class RegUserActivity extends AppCompatActivity {
                 progressDialog.cancel();
                 Toast.makeText(RegUserActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros = new HashMap<>();
-                parametros.put("names", usuario_nombres_reg.getText().toString());
-                parametros.put("birthdate", usuario_nacimiento_reg.getText().toString());
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("nombre", usuario_nombres_reg.getText().toString());
+                parametros.put("apellidos", usuario_apellidos_reg.getText().toString());
                 parametros.put("email", usuario_email_reg.getText().toString());
-                parametros.put("clave", usuario_clave_reg.getText().toString());
-                parametros.put("registro_usuario","");
+                parametros.put("pass", usuario_clave_reg.getText().toString());
+                parametros.put("direccion", usuario_direccion_reg.getText().toString());
+                parametros.put("descripcion", usuario_direccion_reg.getText().toString());
+                parametros.put("registra_usuario", "");
                 return parametros;
             }
         };
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-    private void Calendar(TextInputEditText textInputEditText){
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(RegUserActivity.this, android.app.AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                textInputEditText.setText(formatoFecha(i2, i1, i));
-                //usuario_nacimiento_reg.setText(formatoFecha(i2, i1, i));
-            }
-        }, annio,mes,dia);
-
-        datePickerDialog.show();
-
-    }
-
-    private String formatoFecha(int d, int m, int a){
-        String s_mes, dia, fecha="";
-        int mes;
-
-        if(d < 10){
-            dia = "0"+d;
-        }else{
-            dia = String.valueOf(d);
-        }
-
-        mes = m+1;
-
-        if (mes < 10){
-            s_mes = "0"+mes;
-        }else{
-            s_mes = String.valueOf(mes);
-        }
-
-        fecha = a+"/"+s_mes+"/"+dia;
-        return fecha;
-    }
 }
+

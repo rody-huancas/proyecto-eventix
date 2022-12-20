@@ -6,106 +6,164 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:padding="20dp"
     tools:context=".RegUserActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
+    <!-- Título -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/name_user"
-        app:endIconMode="clear_text"
-        android:hint="Nombres"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:padding="20dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usuario_nombres_reg"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Regístrate"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="25dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <!-- Nombre -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombres"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/name_user">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_nombres_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+
+        <!-- Apellidos -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/name_user"
+            app:endIconMode="clear_text"
+            android:hint="Apellidos"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_apellidos_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <!-- Correo electronico -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/email"
+            app:endIconMode="clear_text"
+            android:hint="Correo electrónico"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_email_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contraseña  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/pass"
+            app:endIconMode="password_toggle"
+            android:hint="Contraseña"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_clave_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <!-- Dirección  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/email"
+            app:endIconMode="clear_text"
+            android:hint="Dirección"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_direccion_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Descripcion  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/email"
+            app:endIconMode="clear_text"
+            android:hint="Ingrese una descripción"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_descripcion_reg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="30dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/calendar"
-        app:endIconMode="clear_text"
-        android:hint="Fecha de nacimiento"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usuario_nacimiento_reg"
-            android:layout_width="match_parent"
-            android:focusable="false"
-            android:inputType="date"
-            android:layout_height="50dp"
-            />
+        <Button
+            android:id="@+id/btn_registrar_usuario"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:text="Registrar"
+            android:layout_marginRight="5dp"
+            android:textSize="18sp"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/email"
-        app:endIconMode="clear_text"
-        android:hint="Correo electrónico"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usuario_email_reg"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/pass"
-        app:endIconMode="password_toggle"
-        android:hint="Clave"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usuario_clave_reg"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="textPassword"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <Button
-        android:id="@+id/btn_registrar_usuario"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        android:textSize="18sp"/>
-
-    <Button
-        android:id="@+id/btn_cancelar_usuario"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="Cancelar"
-        android:textSize="18sp" />
+        <Button
+            android:id="@+id/btn_cancelar_usuario"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:text="Cancelar"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>

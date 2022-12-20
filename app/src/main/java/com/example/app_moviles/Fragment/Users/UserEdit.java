@@ -36,7 +36,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.app_moviles.Config.Config;
 import com.example.app_moviles.Fragment.MainFragment;
 import com.example.app_moviles.R;
-import com.example.app_moviles.RegUserActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -48,19 +47,15 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class UserEdit extends Fragment {
 
-    private TextInputEditText usuario_nombres_e, usuario_nacimiento_e, usuario_email_e, usuario_clave_e;
+    private TextInputEditText usuario_nombres_e, usuario_apellidos_e, usuario_email_e, usuario_clave_e, usuario_direccion_e, usuario_descripcion_e;
     private Button btn_actualizar_usuario, btn_cancelar_usuario_e;
 
     private FragmentManager fragmentManager;
@@ -87,9 +82,11 @@ public class UserEdit extends Fragment {
         getActivity().setTitle("Actualizar datos de usuario");
 
         usuario_nombres_e = view.findViewById(R.id.usuario_nombres_e);
-        usuario_nacimiento_e = view.findViewById(R.id.usuario_nacimiento_e);
+        usuario_apellidos_e = view.findViewById(R.id.usuario_apellidos_e);
         usuario_email_e = view.findViewById(R.id.usuario_email_e);
         usuario_clave_e = view.findViewById(R.id.usuario_clave_e);
+        usuario_direccion_e = view.findViewById(R.id.usuario_direccion_e);
+        usuario_descripcion_e = view.findViewById(R.id.usuario_descripcion_e);
         iv_foto_perfil = view.findViewById(R.id.iv_foto_perfil);
 
         btn_actualizar_usuario = view.findViewById(R.id.btn_actualizar_usuario);
@@ -119,13 +116,6 @@ public class UserEdit extends Fragment {
             }
         });
 
-        usuario_nacimiento_e.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar(usuario_nacimiento_e);
-            }
-        });
-
         Config config = new Config();
         SharedPreferences sesion = getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
         api_obtener_usuario = config.getAPI_URL()+"api_usuario.php?listar_usuarios_email&email=" + sesion.getString("email", "");
@@ -140,7 +130,7 @@ public class UserEdit extends Fragment {
             }
         });
 
-        apiPhoto = config.getAPI_URL()+"photos_users/"+sesion.getString("id","")+".png";
+        apiPhoto = config.getAPI_URL()+"photos_users/"+sesion.getString("idUsuario","")+".png";
 
         Picasso.get().load(apiPhoto).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
                 .error(R.drawable.user_add).into(iv_foto_perfil);
@@ -157,10 +147,12 @@ public class UserEdit extends Fragment {
                     try {
                         jsonObject = response.getJSONObject(i);
 
-                        usuario_nombres_e.setText(jsonObject.getString("names"));
-                        usuario_nacimiento_e.setText(jsonObject.getString("birthdate"));
+                        usuario_nombres_e.setText(jsonObject.getString("nombre"));
+                        usuario_apellidos_e.setText(jsonObject.getString("apellidos"));
                         usuario_email_e.setText(jsonObject.getString("email"));
                         usuario_clave_e.setText(jsonObject.getString("pass"));
+                        usuario_direccion_e.setText(jsonObject.getString("direccion"));
+                        usuario_descripcion_e.setText(jsonObject.getString("descripcion"));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -175,41 +167,6 @@ public class UserEdit extends Fragment {
         });
         requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(jsonArrayRequest);
-    }
-
-    private void Calendar(TextInputEditText textInputEditText){
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), android.app.AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                textInputEditText.setText(formatoFecha(i2, i1, i));
-            }
-        }, annio,mes,dia);
-
-        datePickerDialog.show();
-
-    }
-
-    private String formatoFecha(int d, int m, int a){
-        String s_mes, dia, fecha="";
-        int mes;
-
-        if(d < 10){
-            dia = "0"+d;
-        }else{
-            dia = String.valueOf(d);
-        }
-
-        mes = m+1;
-
-        if (mes < 10){
-            s_mes = "0"+mes;
-        }else{
-            s_mes = String.valueOf(mes);
-        }
-
-        fecha = a+"/"+s_mes+"/"+dia;
-        return fecha;
     }
 
     private void seleccionarImagen(){
@@ -244,7 +201,7 @@ public class UserEdit extends Fragment {
     }
 
     private void ActualizarUsuario(){
-
+        System.out.println("ERROR");
         final ProgressDialog progressDialog = ProgressDialog.show(getContext(), "Actualizando","Espere un momento", false,false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, apiUsuario, new Response.Listener<String>() {
             @Override
@@ -271,10 +228,12 @@ public class UserEdit extends Fragment {
                                 SharedPreferences sesion =getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sesion.edit();
 
-                                editor.putString("names", usuario_nombres_e.getText().toString());
-                                editor.putString("birthdate", usuario_nacimiento_e.getText().toString());
+                                editor.putString("nombre", usuario_nombres_e.getText().toString());
+                                editor.putString("apellidos", usuario_apellidos_e.getText().toString());
                                 editor.putString("email", usuario_email_e.getText().toString());
                                 editor.putString("pass", usuario_clave_e.getText().toString());
+                                editor.putString("direccion", usuario_direccion_e.getText().toString());
+                                editor.putString("descripcion", usuario_descripcion_e.getText().toString());
                                 //editor.putString("photo", jsonObject.getString("photo"));
                                 editor.commit();
 
@@ -305,11 +264,13 @@ public class UserEdit extends Fragment {
 
                 SharedPreferences sesion =getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
 
-                parametros.put("id", sesion.getString("id",""));
-                parametros.put("names", usuario_nombres_e.getText().toString());
-                parametros.put("birthdate", usuario_nacimiento_e.getText().toString());
+                parametros.put("idUsuario", sesion.getString("idUsuario",""));
+                parametros.put("nombre", usuario_nombres_e.getText().toString());
+                parametros.put("apellidos", usuario_apellidos_e.getText().toString());
                 parametros.put("email", usuario_email_e.getText().toString());
                 parametros.put("pass", usuario_clave_e.getText().toString());
+                parametros.put("direccion", usuario_direccion_e.getText().toString());
+                parametros.put("descripcion", usuario_descripcion_e.getText().toString());
                 parametros.put("photo", conversionBase64(bitmap));
                 parametros.put("actualizar_usuario","");
 
