@@ -59,18 +59,16 @@
                 android:text="Descripcion"
                 android:textColor="#2D2D2E"
                 android:textSize="15dp" />
-
-            <Button
-                android:id="@+id/btn_verevento"
+            <TextView
+                android:id="@+id/direccion_evento"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="ver evento"
-                app:icon="@drawable/play"
-                app:iconGravity="textStart"
-                app:iconSize="25dp" />
+                android:text="Dirección"
+                android:textColor="#2D2D2E"
+                android:textSize="15dp" />
+
         </LinearLayout>
 
 

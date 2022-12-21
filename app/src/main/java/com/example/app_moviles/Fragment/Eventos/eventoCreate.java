@@ -73,7 +73,7 @@ public class eventoCreate extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_evento_create, container, false);
-        getActivity().setTitle("Registro de Casos");
+        getActivity().setTitle("Registro de Eventos");
 
         iv_foto_evento_c = view.findViewById(R.id.iv_foto_evento_c);
         btn_registrar_ev = view.findViewById(R.id.btn_registrar_ev);
@@ -213,7 +213,7 @@ public class eventoCreate extends Fragment {
                     code = jsonObject.getInt("code");
 
                     AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                    alert.setTitle("Registro de Casos");
+                    alert.setTitle("Registro de Eventos");
                     alert.setMessage(message);
                     alert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override

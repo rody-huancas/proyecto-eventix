@@ -13,10 +13,6 @@
                 android:icon="@drawable/tree"
                 android:title="Registrar Nuevo Evento"/>
 
-            <item
-                android:id="@+id/men_especies"
-                android:icon="@drawable/map"
-                android:title="Especies"/>
         </menu>
     </item>
 

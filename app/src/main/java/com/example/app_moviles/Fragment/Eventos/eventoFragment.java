@@ -62,7 +62,6 @@ public class eventoFragment extends Fragment {
 
         btn_nuevo_evento = (FloatingActionButton) view.findViewById(R.id.btn_nuevo_evento);
 
-
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 

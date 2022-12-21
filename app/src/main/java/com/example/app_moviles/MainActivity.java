@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         user_email_header = headerMenu.findViewById(R.id.user_email_header);
         iv_foto_menu = headerMenu.findViewById(R.id.iv_foto_menu);
 
-        //obtenerDatosUsuario();
+        obtenerDatosUsuario();
 
     }
 
