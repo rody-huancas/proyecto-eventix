@@ -172,20 +172,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         jsonObject = response.getJSONObject(i);
                     }
 
-                    apiFoto = config.getAPI_URL() + "photos_users/"+jsonObject.getString("id")+".png";
+                    apiFoto = config.getAPI_URL() + "photos_users/"+jsonObject.getString("idUsuario")+".png";
                     Picasso.get().load(apiFoto).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE)
                                 .error(R.mipmap.ic_launcher).into(iv_foto_menu);
 
                     SharedPreferences sesion = getSharedPreferences("sesion", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sesion.edit();
-                    editor.putString("id", jsonObject.getString("id"));
-                    editor.putString("names", jsonObject.getString("names"));
-                    editor.putString("birthdate", jsonObject.getString("birthdate"));
+                    editor.putString("idUsuario", jsonObject.getString("idUsuario"));
+                    editor.putString("nombre", jsonObject.getString("nombre"));
+                    editor.putString("apellidos", jsonObject.getString("apellidos"));
+                    editor.putString("direccion", jsonObject.getString("direccion"));
+                    editor.putString("descripcion", jsonObject.getString("descripcion"));
                     editor.putString("photo", jsonObject.getString("photo"));
                     editor.commit();
 
 
-                    user_name_header.setText(jsonObject.getString("names"));
+                    user_name_header.setText(jsonObject.getString("nombre"));
                     user_email_header.setText(jsonObject.getString("email"));
 
                     } catch (JSONException e) {
