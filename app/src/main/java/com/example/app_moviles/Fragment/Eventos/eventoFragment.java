@@ -1,5 +1,7 @@
 package com.example.app_moviles.Fragment.Eventos;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,8 +75,10 @@ public class eventoFragment extends Fragment {
             }
         });
 
+        SharedPreferences sesion = getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
+
         Config config = new Config();
-        Api = config.getAPI_URL()+"api_evento.php?listar_evento";
+        Api = config.getAPI_URL()+"api_evento.php?listar_evento_usuario&idUsuario="+sesion.getString("idUsuario","");
 
         listarEventos();
 
