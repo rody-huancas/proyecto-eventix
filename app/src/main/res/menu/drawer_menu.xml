@@ -27,6 +27,10 @@
                 android:id="@+id/editar_usuario"
                 android:title="Actualizar Datos"
                 android:icon="@drawable/user"/>
+            <item
+                android:id="@+id/perfil_usuario"
+                android:title="Mi perfil"
+                android:icon="@drawable/user"/>
         </menu>
     </item>
 

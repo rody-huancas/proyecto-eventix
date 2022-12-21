@@ -29,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.app_moviles.Config.Config;
 import com.example.app_moviles.Fragment.MainFragment;
 import com.example.app_moviles.Fragment.Users.UserEdit;
+import com.example.app_moviles.Fragment.Users.UserPerfil;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //fragment = new FamiliesFragment();
         }else if(item.getItemId()==R.id.editar_usuario){
             fragment = new UserEdit();
+        }else if(item.getItemId()==R.id.perfil_usuario){
+            fragment = new UserPerfil();
         }else if(item.getItemId()==R.id.cerrar_sesion){
             /*
             Intent logout = new Intent(this, LoginActivity.class);
