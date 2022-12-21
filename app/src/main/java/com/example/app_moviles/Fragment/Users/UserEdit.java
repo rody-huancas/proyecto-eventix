@@ -1,6 +1,5 @@
 package com.example.app_moviles.Fragment.Users;
 
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,6 +33,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app_moviles.Config.Config;
 import com.example.app_moviles.Fragment.MainFragment;
+import com.example.app_moviles.MainActivity;
 import com.example.app_moviles.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.MemoryPolicy;
@@ -48,7 +47,6 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,12 +54,12 @@ import java.util.Map;
 public class UserEdit extends Fragment {
 
     private TextInputEditText usuario_nombres_e, usuario_apellidos_e, usuario_email_e, usuario_clave_e, usuario_direccion_e, usuario_descripcion_e;
-    private Button btn_actualizar_usuario, btn_cancelar_usuario_e;
+    private Button btn_actualizar_usuario, btn_cancelar_usuario_e, btn_eliminar_usuario_e;
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
-    private String api_obtener_usuario, apiUsuario, message, apiPhoto;
+    private String api_obtener_usuario, apiUsuario, message, apiPhoto, id_usuario;
     private int dia, mes, annio, code;
 
     private ImageView iv_foto_perfil;
@@ -72,7 +70,6 @@ public class UserEdit extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -91,15 +88,17 @@ public class UserEdit extends Fragment {
 
         btn_actualizar_usuario = view.findViewById(R.id.btn_actualizar_usuario);
         btn_cancelar_usuario_e = view.findViewById(R.id.btn_cancelar_usuario_e);
-
-        final Calendar calendar = Calendar.getInstance();
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
-        mes = calendar.get(Calendar.MONTH);
-        annio = calendar.get(Calendar.YEAR);
-
+        btn_eliminar_usuario_e = view.findViewById(R.id.btn_eliminar_usuario_e);
 
         fragmentManager =  getActivity().getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+
+        btn_eliminar_usuario_e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EliminarUsuario();
+            }
+        });
 
         btn_cancelar_usuario_e.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +114,7 @@ public class UserEdit extends Fragment {
                 ActualizarUsuario();
             }
         });
+
 
         Config config = new Config();
         SharedPreferences sesion = getActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
@@ -237,12 +237,14 @@ public class UserEdit extends Fragment {
                                 //editor.putString("photo", jsonObject.getString("photo"));
                                 editor.commit();
 
+                                //Cambiar a la venta principal
+                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                startActivity(intent);
                             }
                         }
                     });
                     AlertDialog dialog = alert.create();
                     dialog.show();
-
                 } catch (JSONException e) {
                     progressDialog.cancel();
                     //Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
@@ -281,4 +283,7 @@ public class UserEdit extends Fragment {
         requestQueue.add(stringRequest);
     }
 
+    private void EliminarUsuario(){
+
+    }
 }

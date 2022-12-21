@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.Users.UserEdit">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aclonica"
+                android:gravity="center"
+                android:text="Mi Perfil"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="25dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <!-- Imagen -->
+            <ImageView
+                android:id="@+id/imagen_foto_perfil"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:src="@drawable/user_add"></ImageView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tv_nombre_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tv_apellidos_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tv_email_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tv_direccion_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tv_descripcion_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>
