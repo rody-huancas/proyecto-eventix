@@ -9,9 +9,9 @@
         android:title="Administración">
         <menu>
             <item
-                android:id="@+id/men_familias"
+                android:id="@+id/men_Evento"
                 android:icon="@drawable/tree"
-                android:title="Familias"/>
+                android:title="Registrar Nuevo Evento"/>
 
             <item
                 android:id="@+id/men_especies"

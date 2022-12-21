@@ -27,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.app_moviles.Config.Config;
+import com.example.app_moviles.Fragment.Eventos.eventoFragment;
 import com.example.app_moviles.Fragment.MainFragment;
 import com.example.app_moviles.Fragment.Users.UserEdit;
 import com.google.android.material.navigation.NavigationView;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         user_email_header = headerMenu.findViewById(R.id.user_email_header);
         iv_foto_menu = headerMenu.findViewById(R.id.iv_foto_menu);
 
-        obtenerDatosUsuario();
+        //obtenerDatosUsuario();
 
     }
 
@@ -108,8 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(item.getItemId()==R.id.inicio){
             fragment = new MainFragment();
-        }else if(item.getItemId()==R.id.men_familias){
-            //fragment = new FamiliesFragment();
+        }else if(item.getItemId()==R.id.men_Evento){
+            fragment = new eventoFragment();
         }else if(item.getItemId()==R.id.editar_usuario){
             fragment = new UserEdit();
         }else if(item.getItemId()==R.id.cerrar_sesion){

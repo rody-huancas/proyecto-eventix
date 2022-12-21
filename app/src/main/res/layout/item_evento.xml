@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_foto_evento_list"
+            android:layout_width="140dp"
+            android:layout_height="220dp"
+            android:src="@drawable/user_add"></ImageView>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="Evento"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+
+                android:id="@+id/name_evento"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:textSize="15dp"
+                android:text="Evento"
+                android:padding="5dp"
+                android:gravity="center_vertical"
+                android:textColor="#3D9DEA"/>
+
+            <TextView
+                android:id="@+id/descripcion_evento"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="Descripcion"
+                android:textColor="#2D2D2E"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btn_verevento"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ver evento"
+                app:icon="@drawable/play"
+                app:iconGravity="textStart"
+                app:iconSize="25dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <Space
+        android:layout_width="15dp"
+        android:layout_height="match_parent"/>
+</androidx.cardview.widget.CardView>
