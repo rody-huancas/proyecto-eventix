@@ -182,6 +182,26 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_eliminar_usuario_e"
+                    style="#FF0202"
+                    android:background="#FF0202"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="60dp"
+                    android:text="Eliminar mi cuenta"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
